@@ -16,6 +16,11 @@ class MyTextField extends StatelessWidget {
       width: 300,
       child: TextField(
         decoration: InputDecoration(
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.black87)
+          ),
+          suffixIconColor: Colors.black87,
+          suffixIcon: (hintText == 'Email') ? const Icon(Icons.email) : const Icon(Icons.password),
           hintText: hintText,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
