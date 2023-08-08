@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "246012829480",
+    "project_id": "comfyz",
+    "storage_bucket": "comfyz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246012829480:android:ac8ca0d21807bec6c8fa1d",
+        "android_client_info": {
+          "package_name": "com.zaky.furniture_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246012829480-sr132t1653u37o0hcsrlk184pobira5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmMil6KE_Vm2oCHVZ1pZ-OCS7KpSKJLBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246012829480-sr132t1653u37o0hcsrlk184pobira5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
