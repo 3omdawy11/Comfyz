@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:furniture_app/screens/main_menu.dart';
 import 'package:furniture_app/widgets/my_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 class RegisterationScreen extends StatefulWidget {
   const RegisterationScreen({super.key});
   static String id = 'RegisterationScreen';
@@ -11,11 +16,12 @@ class RegisterationScreen extends StatefulWidget {
 class _RegisterationScreenState extends State<RegisterationScreen> {
   @override
   late String email;
-
   late String password;
+  var _emailController = TextEditingController();
+  var _passwordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
   Widget build(BuildContext context) {
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -39,7 +45,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                 children: [
                   Text(
                     'Comfyz\n'
-                        'Where comfort is found',
+                    'Where comfort is found',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         backgroundColor: Colors.orange.shade50,
@@ -56,6 +62,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                       //print(email);
                     },
                     isPassword: false,
+                    controller: _emailController,
                   ),
                   const SizedBox(
                     height: 10,
@@ -64,9 +71,9 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     hintText: 'Password',
                     onChanged: (value) {
                       password = value;
-                      //print(value);
                     },
                     isPassword: true,
+                    controller: _passwordController,
                   ),
                   const SizedBox(
                     height: 30,
@@ -77,8 +84,20 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all(Colors.yellow.shade50)),
-                      onPressed: () {},
+                              MaterialStateProperty.all(Colors.yellow.shade50)),
+                      onPressed: () async {
+                        _emailController.clear();
+                        _passwordController.clear();
+                        try {
+                          final newUser = await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+                          if (newUser != null){
+                            Navigator.pushNamed((context), MainMenu.id);
+                          }
+                        } catch (e) {
+                          print("Please Enter a username and a password");
+                        }
+                      },
                       child: const Text(
                         'Register',
                         style: TextStyle(color: Colors.black87),

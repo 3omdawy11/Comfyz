@@ -5,8 +5,8 @@ class MyTextField extends StatelessWidget {
       {super.key,
         required this.hintText,
         required this.onChanged,
-        required this.isPassword});
-
+        required this.isPassword,required this.controller});
+  late var controller;
   late String hintText;
   late ValueChanged<String> onChanged;
   late bool isPassword;
@@ -15,6 +15,8 @@ class MyTextField extends StatelessWidget {
     return SizedBox(
       width: 300,
       child: TextField(
+        keyboardType: isPassword ? TextInputType.text : TextInputType.emailAddress,
+        controller: controller,
         decoration: InputDecoration(
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.black87)

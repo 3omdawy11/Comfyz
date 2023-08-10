@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_app/screens/registeration_screen.dart';
 import 'package:furniture_app/widgets/my_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'main_menu.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,9 +14,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
   late String email;
   late String password;
+  var _emailController = TextEditingController();
+  var _passowordController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -55,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //print(email);
                     },
                     isPassword: false,
+                    controller: _emailController,
                   ),
                   const SizedBox(
                     height: 10,
@@ -66,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //print(value);
                     },
                     isPassword: true,
+                    controller: _passowordController,
                   ),
                   const SizedBox(
                     height: 30,
@@ -77,7 +84,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.yellow.shade50)),
-                      onPressed: () {},
+                      onPressed: () async{
+                        _emailController.clear();
+                        _passowordController.clear();
+                        try {
+                          final user = await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: email, password: password);
+                          print(user.toString());
+                          if (user != null) {
+                            Navigator.pushNamed((context), MainMenu.id);
+                          }
+                        } catch (e) {
+                          print('Wrong username or password');
+                        }
+                      },
                       child: const Text(
                         'Login',
                         style: TextStyle(color: Colors.black87),
@@ -91,10 +112,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       'Don\'t have an account .. Register',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontStyle: FontStyle.italic,
-                        decoration: TextDecoration.underline
-                      ),
+                          color: Colors.black,
+                          fontStyle: FontStyle.italic,
+                          decoration: TextDecoration.underline),
                     ),
                   )
                 ],
