@@ -42,6 +42,9 @@ class _MainMenuState extends State<MainMenu> {
             children: [
               Text('Hello ${loggedInUser.email}'),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.yellow.shade50),
+                ),
                 onPressed: () {
                   _auth.signOut();
                   Navigator.pop(context);
