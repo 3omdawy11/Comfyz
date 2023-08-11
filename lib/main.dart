@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: LoginScreen()),
+          nextScreen: MainMenu()),
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         RegisterationScreen.id: (context) => RegisterationScreen(),

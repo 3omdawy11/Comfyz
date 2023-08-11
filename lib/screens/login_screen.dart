@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/loginBackground.jpg'),
+                image: AssetImage('assets/loginMoviebackground.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,7 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Where comfort is found',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        backgroundColor: Colors.orange.shade50,
+                        backgroundColor: Colors.grey.shade50,
+                        color: Colors.black,
                         fontSize: 30,
                         fontFamily: 'DancingScript'),
                   ),
@@ -83,8 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.yellow.shade50)),
-                      onPressed: () async{
+                              MaterialStateProperty.all(Colors.grey.shade50)),
+                      onPressed: () async {
                         _emailController.clear();
                         _passowordController.clear();
                         try {
@@ -106,17 +107,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, RegisterationScreen.id);
-                    },
-                    child: const Text(
-                      'Don\'t have an account .. Register',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontStyle: FontStyle.italic,
-                          decoration: TextDecoration.underline),
-                    ),
-                  )
+                      onPressed: () {
+                        Navigator.pushNamed(context, RegisterationScreen.id);
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don\'t have an account?..',
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontStyle: FontStyle.italic,
+                              //decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          Text(
+                            '  Register',
+                            style: TextStyle(color: Colors.redAccent),
+                          ),
+                        ],
+                      ))
                 ],
               ),
             ),

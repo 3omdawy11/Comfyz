@@ -29,7 +29,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/loginBackground.jpg'),
+                image: AssetImage('assets/loginMoviebackground.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -48,7 +48,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     'Where comfort is found',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        backgroundColor: Colors.orange.shade50,
+                        backgroundColor: Colors.grey,
                         fontSize: 30,
                         fontFamily: 'DancingScript'),
                   ),
@@ -84,7 +84,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.yellow.shade50)),
+                              MaterialStateProperty.all(Colors.grey)),
                       onPressed: () async {
                         _emailController.clear();
                         _passwordController.clear();

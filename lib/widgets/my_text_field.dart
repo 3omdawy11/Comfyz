@@ -15,15 +15,19 @@ class MyTextField extends StatelessWidget {
     return SizedBox(
       width: 300,
       child: TextField(
+        style: TextStyle(
+          color: Colors.white
+        ),
         keyboardType: isPassword ? TextInputType.text : TextInputType.emailAddress,
         controller: controller,
         decoration: InputDecoration(
           focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black87)
+            borderSide: BorderSide(color: Colors.red)
           ),
-          suffixIconColor: Colors.black87,
+          suffixIconColor: Colors.red.shade400,
           suffixIcon: (hintText == 'Email') ? const Icon(Icons.email) : const Icon(Icons.password),
           hintText: hintText,
+          hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
