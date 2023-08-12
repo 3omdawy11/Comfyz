@@ -20,6 +20,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  tmdb_api:
+  google_fonts:
 
   flutter_lints: ^2.0.0
 

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture_app/screens/dashboard.dart';
 import 'package:furniture_app/screens/main_menu.dart';
 import 'package:furniture_app/screens/registeration_screen.dart';
 import 'screens/login_screen.dart';
@@ -36,11 +37,12 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: MainMenu()),
+          nextScreen: Dashboard()),
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         RegisterationScreen.id: (context) => RegisterationScreen(),
         MainMenu.id : (context) => MainMenu(),
+        Dashboard.id : (context) => Dashboard(),
       },
     );
   }

@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height, // changed here
               alignment: Alignment.center,
               //decoration: kLoginBorderDesign,
               child: Column(

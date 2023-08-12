@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture_app/backend/movie_model.dart';
 import 'package:furniture_app/constants.dart';
 import 'package:furniture_app/widgets/selection_tab.dart';
 
@@ -19,10 +20,29 @@ class _MainMenuState extends State<MainMenu> {
   List<String> furnitureCategories = ['Action', 'Horror', 'Drama', 'Romance', 'Comedy', 'Science Fiction'];
   final _auth = FirebaseAuth.instance;
   @override
-  void initState() {
+  MovieModel movieModel = MovieModel();
+  List trendingMovies = [];
+  List topRatedMovies = [];
+  List popularShows = [];
+  void initState(){
     // TODO: implement initState
     super.initState();
     getCurrentUser();
+    updateTrending();
+    updateTopRatedMovies();
+    updatePopularShows();
+  }
+  void updateTrending () async {
+    trendingMovies = await movieModel.getTrendingMovies();
+    print(trendingMovies);
+  }
+  void updateTopRatedMovies () async {
+    topRatedMovies = await movieModel.getTopRatedMovies();
+    print(topRatedMovies);
+  }
+  void updatePopularShows () async {
+    popularShows = await movieModel.getPopularShows();
+    print(popularShows);
   }
 
   void getCurrentUser() {
@@ -100,6 +120,7 @@ class _MainMenuState extends State<MainMenu> {
             height: 20,
           ),
           SelectionTab(categories: furnitureCategories,),
+          Text('${MovieModel().getTrendingMovies()}'),
         ],
       ),
     );
