@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'networking.dart';
 import 'package:http/http.dart' as http;
 import 'package:tmdb_api/tmdb_api.dart';
 String apiKey = '66aceb993bfe32a6b383fcc9909b910d';
@@ -28,13 +27,24 @@ class MovieModel {
     //print(popularShows);
     return popularShows['results'];
   }
-  Future<dynamic>searchMovie(String movieName)async {
+  Future<List> searchMovie(String movieName) async {
     final response = await http.get(Uri.parse('https://api.themoviedb.org/3/search/movie?query=$movieName&api_key=$apiKey'));
-    if (response.statusCode == 200){
-      print(jsonDecode(response.body)['results']);
-    }else{
-      print ('Error boy'); // most likely wont happen because if returns empty list if there are no results
+    List resultList = [];
+
+    if (response.statusCode == 200) {
+      resultList = jsonDecode(response.body)['results'];
+
+      for (int i = resultList.length - 1; i >= 0; i--) {
+        if (resultList[i]['poster_path'] == null) {
+          resultList.removeAt(i);
+        }
+      }
+
+      print(resultList);
+    } else {
+      print('Error fetching data');
     }
-    return jsonDecode(response.body)['results'];
+
+    return resultList;
   }
 }

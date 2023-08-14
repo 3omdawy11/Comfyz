@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: Dashboard()),
+          nextScreen: LoginScreen()),
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         RegisterationScreen.id: (context) => RegisterationScreen(),

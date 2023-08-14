@@ -15,7 +15,6 @@ class MovieDescriptionScreen extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            //margin: EdgeInsets.all(20),
             height: 150,
             decoration: BoxDecoration(
               image: DecorationImage(

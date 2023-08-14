@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:furniture_app/screens/login_screen.dart';
 import 'package:furniture_app/screens/main_menu.dart';
 import 'package:furniture_app/widgets/my_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,7 +44,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Comfyz\n'
                     'Where comfort is found',
                     textAlign: TextAlign.center,
@@ -92,7 +93,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                           final newUser = await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                           if (newUser != null){
-                            Navigator.pushNamed((context), MainMenu.id);
+                            Navigator.pushNamed((context), LoginScreen.id);
                           }
                         } catch (e) {
                           print("Please Enter a username and a password");

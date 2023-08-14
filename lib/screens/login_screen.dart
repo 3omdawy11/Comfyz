@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furniture_app/screens/dashboard.dart';
 import 'package:furniture_app/screens/registeration_screen.dart';
 import 'package:furniture_app/widgets/my_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -94,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   email: email, password: password);
                           print(user.toString());
                           if (user != null) {
-                            Navigator.pushNamed((context), MainMenu.id);
+                            Navigator.pushNamed((context), Dashboard.id);
                           }
                         } catch (e) {
                           print('Wrong username or password');
