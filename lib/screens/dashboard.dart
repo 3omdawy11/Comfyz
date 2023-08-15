@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../backend/movie_model.dart';
 import 'package:furniture_app/widgets/movie_list.dart';
@@ -81,6 +82,7 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: SideMenuIcons(),
         title: const Text(
           'Comfyz',
         ),
@@ -112,6 +114,80 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
           ],
         ),
       ),
+      drawer: Drawer(
+        width: MediaQuery.of(context).size.width * 0.5,
+        backgroundColor: Colors.redAccent,
+        child: ListView(
+          children: [
+            DrawerOptions(
+              iconName: 'Favorites',
+              icon: const Icon(
+                CupertinoIcons.star,
+              ),
+              onTap: () {
+
+              },
+            ),
+            DrawerOptions(
+              iconName: 'Settings',
+              icon: const Icon(Icons.settings),
+              onTap: () {},
+            ),
+            DrawerOptions(
+                iconName: 'Sign out',
+                icon: const Icon(Icons.login_outlined),
+                onTap: () {
+                  _auth.signOut();
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+
+
+                })
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DrawerOptions extends StatelessWidget {
+  DrawerOptions(
+      {super.key,
+      required this.iconName,
+      required this.icon,
+      required this.onTap});
+  late String iconName;
+  late Icon icon;
+  late VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        iconName,
+        style: TextStyle(color: Colors.black87),
+      ),
+      leading: icon,
+      onTap: onTap,
+    );
+  }
+}
+
+class SideMenuIcons extends StatelessWidget {
+  const SideMenuIcons({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(
+        Icons.menu,
+        color: Colors.white,
+      ),
+      onPressed: () {
+        // Open the drawer
+        Scaffold.of(context).openDrawer();
+      },
     );
   }
 }

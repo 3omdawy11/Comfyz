@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_app/backend/movie_model.dart';
 import 'package:furniture_app/screens/dashboard.dart';
+import 'package:furniture_app/screens/favorites_screen.dart';
 import 'package:furniture_app/screens/main_menu.dart';
 import 'package:furniture_app/screens/registeration_screen.dart';
 import 'package:furniture_app/screens/search_result_screen.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         RegisterationScreen.id: (context) => RegisterationScreen(),
         MainMenu.id : (context) => MainMenu(),
         Dashboard.id : (context) => Dashboard(),
+        FavoriteScreen.id : (context) => FavoriteScreen(),
       },
     );
   }
