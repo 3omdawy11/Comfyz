@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:furniture_app/screens/login_screen.dart';
-import 'package:furniture_app/screens/main_menu.dart';
 import 'package:furniture_app/widgets/my_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

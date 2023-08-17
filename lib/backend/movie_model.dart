@@ -27,24 +27,32 @@ class MovieModel {
     //print(popularShows);
     return popularShows['results'];
   }
+
   Future<List> searchMovie(String movieName) async {
-    final response = await http.get(Uri.parse('https://api.themoviedb.org/3/search/movie?query=$movieName&api_key=$apiKey'));
-    List resultList = [];
+    try {
+      final response = await http.get(Uri.parse(
+          'https://api.themoviedb.org/3/search/movie?query=$movieName&api_key=$apiKey'));
 
-    if (response.statusCode == 200) {
-      resultList = jsonDecode(response.body)['results'];
+      if (response.statusCode == 200) {
+        List resultList = jsonDecode(response.body)['results'];
 
-      for (int i = resultList.length - 1; i >= 0; i--) {
-        if (resultList[i]['poster_path'] == null) {
-          resultList.removeAt(i);
+        for (int i = resultList.length - 1; i >= 0; i--) {
+          if (resultList[i]['poster_path'] == null) {
+            resultList.removeAt(i);
+          }
         }
+
+        print(resultList);
+        return resultList;
+      } else {
+        print('Error fetching data');
+        return [];
       }
-
-      print(resultList);
-    } else {
-      print('Error fetching data');
+    } catch (e) {
+      print('An error occurred: $e');
+      return [];
     }
-
-    return resultList;
   }
+
+
 }

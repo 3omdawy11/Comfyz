@@ -4,8 +4,6 @@ import 'package:furniture_app/screens/registeration_screen.dart';
 import 'package:furniture_app/widgets/my_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'main_menu.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
   static String id = 'LoginScreen';

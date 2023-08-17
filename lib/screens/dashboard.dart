@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture_app/screens/favorites_screen.dart';
 import '../backend/movie_model.dart';
 import 'package:furniture_app/widgets/movie_list.dart';
 import 'package:furniture_app/widgets/search_bar.dart';
-import 'package:furniture_app/widgets/movie_description_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 late User loggedInUser;
@@ -86,12 +86,13 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
         title: const Text(
           'Comfyz',
         ),
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.red,
       ),
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Column(
           children: [
+
             MySearchBar(),
             const SizedBox(
               height: 20,
@@ -125,7 +126,7 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
                 CupertinoIcons.star,
               ),
               onTap: () {
-
+                Navigator.pushNamed(context, FavoriteScreen.id);
               },
             ),
             DrawerOptions(
@@ -140,8 +141,6 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
                   _auth.signOut();
                   Navigator.pop(context);
                   Navigator.pop(context);
-
-
                 })
           ],
         ),

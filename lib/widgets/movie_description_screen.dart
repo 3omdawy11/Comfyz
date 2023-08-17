@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'add_to_favirote_icon.dart';
 class MovieDescriptionScreen extends StatelessWidget {
   const MovieDescriptionScreen({super.key, required this.moviesList, required this.index});
   final List moviesList;
   final int index;
   @override
   Widget build(BuildContext context) {
+    Color _iconColor = Colors.white;
     return Container(
       //margin: EdgeInsets.only(left: 10,right: 10),
       padding: const EdgeInsets.all(30),
@@ -49,9 +53,11 @@ class MovieDescriptionScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Text('Rate : ${moviesList[index]['vote_average']} ⭐')
+          Text('Rate : ${moviesList[index]['vote_average']} ⭐'),
+          AddToFavoriteIcon()
         ],
       ),
     );
   }
 }
+
