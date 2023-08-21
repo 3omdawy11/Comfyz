@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture_app/constants.dart';
 import 'package:furniture_app/screens/favorites_screen.dart';
+import 'package:provider/provider.dart';
 import '../backend/movie_model.dart';
 import 'package:furniture_app/widgets/movie_list.dart';
 import 'package:furniture_app/widgets/search_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../backend/personal_data.dart';
 
 late User loggedInUser;
 
@@ -82,18 +86,17 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: SideMenuIcons(),
+        leading: const SideMenuIcons(),
         title: const Text(
-          'Comfyz',
+          'Comfyz', style: kAppBarTitleStyle,
         ),
         backgroundColor: Colors.red,
       ),
-      backgroundColor: Colors.transparent,
+      backgroundColor: kBackGroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-
-            MySearchBar(),
+            const MySearchBar(),
             const SizedBox(
               height: 20,
             ),
@@ -163,7 +166,7 @@ class DrawerOptions extends StatelessWidget {
     return ListTile(
       title: Text(
         iconName,
-        style: TextStyle(color: Colors.black87),
+        style: kDrawerTextStyle,
       ),
       leading: icon,
       onTap: onTap,
@@ -181,7 +184,7 @@ class SideMenuIcons extends StatelessWidget {
     return IconButton(
       icon: const Icon(
         Icons.menu,
-        color: Colors.white,
+        size: kIconSize,
       ),
       onPressed: () {
         // Open the drawer

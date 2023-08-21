@@ -15,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late String email;
   late String password;
-  var _emailController = TextEditingController();
-  var _passowordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //print(value);
                     },
                     isPassword: true,
-                    controller: _passowordController,
+                    controller: _passwordController,
                   ),
                   const SizedBox(
                     height: 30,
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               MaterialStateProperty.all(Colors.grey.shade50)),
                       onPressed: () async {
                         _emailController.clear();
-                        _passowordController.clear();
+                        _passwordController.clear();
                         try {
                           final user = await FirebaseAuth.instance
                               .signInWithEmailAndPassword(

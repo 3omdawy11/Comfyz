@@ -1,21 +1,20 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import 'add_to_favirote_icon.dart';
+import 'package:flutter/material.dart';
+import 'package:furniture_app/widgets/add_to_favirote_icon.dart';
 class MovieDescriptionScreen extends StatelessWidget {
-  const MovieDescriptionScreen({super.key, required this.moviesList, required this.index});
+  MovieDescriptionScreen(
+      {super.key, required this.moviesList, required this.index});
   final List moviesList;
   final int index;
   @override
   Widget build(BuildContext context) {
-    Color _iconColor = Colors.white;
     return Container(
       //margin: EdgeInsets.only(left: 10,right: 10),
       padding: const EdgeInsets.all(30),
       decoration: const BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
-      ),
+          color: Colors.grey,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: Column(
         children: [
           Container(
@@ -39,25 +38,27 @@ class MovieDescriptionScreen extends StatelessWidget {
                 //padding: EdgeInsets.all(10),
                 width: MediaQuery.of(context).size.width,
                 //height: MediaQuery.of(context).size.height,
-                child: Text(moviesList[index]['overview'],
-                style: const TextStyle(
-                  fontSize: 15
-                ),),
+                child: Text(
+                  moviesList[index]['overview'],
+                  style: const TextStyle(fontSize: 15),
+                ),
               ),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(moviesList[index]['release_date']!= null ? 'Release Date : ${moviesList[index]['release_date']}': ''),
+          Text(moviesList[index]['release_date'] != null
+              ? 'Release Date : ${moviesList[index]['release_date']}'
+              : ''),
           const SizedBox(
             height: 10,
           ),
           Text('Rate : ${moviesList[index]['vote_average']} ⭐'),
-          AddToFavoriteIcon()
+          AddToFavoriteIcon(movie: moviesList[index])
+
         ],
       ),
     );
   }
 }
-
