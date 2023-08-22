@@ -53,6 +53,19 @@ class MovieModel {
       return [];
     }
   }
+  Future<String> WatchMovie(int movieId) async {
+    try {
+      Map movieDetails = await tmdb.v3.movies.getDetails(movieId);
+      //print('Movie details for movie ID $movieId:');
+      //print(movieDetails);
+      //print(movieDetails['homepage']);
+      return movieDetails['homepage'];
+
+    } catch (e) {
+      print('An error occurred: $e');
+      return '';
+    }
+  }
 
 
 }

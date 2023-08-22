@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:furniture_app/backend/movie_model.dart';
 import 'package:furniture_app/widgets/add_to_favirote_icon.dart';
+import 'package:url_launcher/url_launcher.dart';
 class MovieDescriptionScreen extends StatelessWidget {
   MovieDescriptionScreen(
       {super.key, required this.moviesList, required this.index});
@@ -55,8 +56,60 @@ class MovieDescriptionScreen extends StatelessWidget {
             height: 10,
           ),
           Text('Rate : ${moviesList[index]['vote_average']} ⭐'),
-          AddToFavoriteIcon(movie: moviesList[index])
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AddToFavoriteIcon(movie: moviesList[index]),
 
+              GestureDetector(
+                onTap: ()async{
+                  print(moviesList[index]);
+                  _launchURL() async {
+                    final String movieUrl = await MovieModel().WatchMovie(moviesList[index]['id']);
+                    if (movieUrl != null && movieUrl.isNotEmpty) {
+                      final Uri url = Uri.parse(movieUrl);
+                      if (await canLaunch(url.toString())) {
+                        await launch(url.toString());
+                      } else {
+                        print("Can't launch $url");
+                      }
+                    } else {
+                      print("Invalid or empty movie URL");
+                    }
+                  }
+
+
+                  _launchURL();
+                  // print('Here here');
+                  // print(moviesList[index]['id']);
+                  // final movieDetailsUrl = await MovieModel().getMovieDetails(moviesList[index]['id']);
+                  //
+                  // if (movieDetailsUrl != null && movieDetailsUrl.isNotEmpty) {
+                  //   try {
+                  //     if (await canLaunch(movieDetailsUrl)) {
+                  //       await launch(movieDetailsUrl);
+                  //     } else {
+                  //       print('Could not launch $movieDetailsUrl');
+                  //     }
+                  //   } catch (e) {
+                  //     print('Error launching URL: $e');
+                  //   }
+                  // } else {
+                  //   print('Invalid or empty movie details URL');
+                  // }
+
+                },
+                child: const Row(
+                  children: [
+                    Text('Click to Watch now  '),
+                    Icon(Icons.movie),
+
+                  ],
+                ),
+              ),
+
+            ],
+          ),
         ],
       ),
     );
