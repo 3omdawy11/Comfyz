@@ -4,7 +4,7 @@ import 'package:furniture_app/backend/personal_data.dart';
 import 'package:furniture_app/constants.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/outcome_list.dart';
+import '../widgets/poster_displays/outcome_list.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);

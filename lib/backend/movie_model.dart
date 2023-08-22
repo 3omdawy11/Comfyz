@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+
 import 'package:http/http.dart' as http;
 import 'package:tmdb_api/tmdb_api.dart';
 String apiKey = '66aceb993bfe32a6b383fcc9909b910d';
@@ -11,19 +12,19 @@ class MovieModel {
 
   Future<List> getTrendingMovies() async {
     Map trendingResults = await tmdb.v3.trending.getTrending();
-    print ('The trending movies are \n\n\n\n\n');
+    //print ('The trending movies are \n\n\n\n\n');
     //print(trendingResults);
     return trendingResults['results'];
   }
   Future<List> getTopRatedMovies() async {
     Map topRatedResults = await tmdb.v3.movies.getTopRated();
-    print ('The Top Rated movies are \n\n\n\n\n');
+    //print ('The Top Rated movies are \n\n\n\n\n');
     //print(topRatedResults);
     return topRatedResults['results'];
   }
   Future<List> getPopularShows() async {
     Map popularShows = await tmdb.v3.tv.getPopular();
-    print ('The Popular shows are \n\n\n\n\n');
+    //print ('The Popular shows are \n\n\n\n\n');
     //print(popularShows);
     return popularShows['results'];
   }
@@ -53,7 +54,7 @@ class MovieModel {
       return [];
     }
   }
-  Future<String> WatchMovie(int movieId) async {
+  Future<String> watchMovie(int movieId) async {
     try {
       Map movieDetails = await tmdb.v3.movies.getDetails(movieId);
       //print('Movie details for movie ID $movieId:');
@@ -66,6 +67,7 @@ class MovieModel {
       return '';
     }
   }
+
 
 
 }

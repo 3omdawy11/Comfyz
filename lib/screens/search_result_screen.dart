@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_app/constants.dart';
-import 'package:furniture_app/widgets/outcome_list.dart';
+import 'package:furniture_app/widgets/poster_displays/outcome_list.dart';
 
 class SearchResultScreen extends StatelessWidget {
   SearchResultScreen({super.key, required this.resultsList});

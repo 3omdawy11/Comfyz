@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_app/backend/movie_model.dart';
-import 'package:furniture_app/widgets/add_to_favirote_icon.dart';
+import 'package:furniture_app/widgets/onclick_descriptions/add_to_favirote_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 class MovieDescriptionScreen extends StatelessWidget {
   MovieDescriptionScreen(
@@ -65,7 +65,7 @@ class MovieDescriptionScreen extends StatelessWidget {
                 onTap: ()async{
                   print(moviesList[index]);
                   _launchURL() async {
-                    final String movieUrl = await MovieModel().WatchMovie(moviesList[index]['id']);
+                    final String movieUrl = await MovieModel().watchMovie(moviesList[index]['id']);
                     if (movieUrl != null && movieUrl.isNotEmpty) {
                       final Uri url = Uri.parse(movieUrl);
                       if (await canLaunch(url.toString())) {

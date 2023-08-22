@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:furniture_app/constants.dart';
 import 'package:provider/provider.dart';
 
-import '../backend/personal_data.dart';
-import 'movie_description_screen.dart';
+import '../../backend/personal_data.dart';
+import '../onclick_descriptions/movie_description_screen.dart';
 class OutcomeList extends StatelessWidget {
   OutcomeList({
     super.key, required this.movieList

@@ -15,7 +15,7 @@ class MyTextField extends StatelessWidget {
     return SizedBox(
       width: 300,
       child: TextField(
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white
         ),
         keyboardType: isPassword ? TextInputType.text : TextInputType.emailAddress,

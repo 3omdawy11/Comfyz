@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_app/constants.dart';
 import 'package:furniture_app/screens/favorites_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:furniture_app/widgets/side_menu/drawer_option.dart';
 import '../backend/movie_model.dart';
-import 'package:furniture_app/widgets/movie_list.dart';
-import 'package:furniture_app/widgets/search_bar.dart';
+import 'package:furniture_app/widgets/poster_displays/movie_list.dart';
+import 'package:furniture_app/widgets/entry_widgets/search_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '../backend/personal_data.dart';
+import 'package:furniture_app/widgets/side_menu/side_menu_icon.dart';
 
 late User loggedInUser;
 
@@ -67,26 +66,26 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
   void updateTrending() async {
     trendingMovies = await movieModel.getTrendingMovies();
     setState(() {});
-    print(trendingMovies);
+    //print(trendingMovies);
   }
 
   void updateTopRatedMovies() async {
     topRatedMovies = await movieModel.getTopRatedMovies();
     setState(() {});
-    print(topRatedMovies);
+    //print(topRatedMovies);
   }
 
   void updatePopularShows() async {
     popularShows = await movieModel.getPopularShows();
     setState(() {});
-    print(popularShows);
+    //print(popularShows);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const SideMenuIcons(),
+        leading: const SideMenuIcon(),
         title: const Text(
           'Comfyz', style: kAppBarTitleStyle,
         ),
@@ -152,44 +151,5 @@ class _DashboardState extends State<Dashboard> with WidgetsBindingObserver {
   }
 }
 
-class DrawerOptions extends StatelessWidget {
-  DrawerOptions(
-      {super.key,
-      required this.iconName,
-      required this.icon,
-      required this.onTap});
-  late String iconName;
-  late Icon icon;
-  late VoidCallback onTap;
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        iconName,
-        style: kDrawerTextStyle,
-      ),
-      leading: icon,
-      onTap: onTap,
-    );
-  }
-}
 
-class SideMenuIcons extends StatelessWidget {
-  const SideMenuIcons({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.menu,
-        size: kIconSize,
-      ),
-      onPressed: () {
-        // Open the drawer
-        Scaffold.of(context).openDrawer();
-      },
-    );
-  }
-}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_app/constants.dart';
-import 'movie_description_screen.dart';
+import '../onclick_descriptions/movie_description_screen.dart';
 
 class MovieList extends StatelessWidget {
   const MovieList({
