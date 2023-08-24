@@ -71,7 +71,6 @@ class _MySearchBarState extends State<MySearchBar> {
                       builder: (context) => SearchResultScreen(resultsList: resultList),
                     ),
                   );
-
                   _textEditingController.clear();
                   _searchFocus.unfocus(); // Remove focus after search
                 }
@@ -92,6 +91,7 @@ class _MySearchBarState extends State<MySearchBar> {
 
   @override
   void dispose() {
+    _textEditingController.clear();
     _textEditingController.dispose();
     _searchFocus.dispose();
     super.dispose();
