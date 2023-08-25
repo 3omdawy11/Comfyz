@@ -66,8 +66,11 @@ class OutcomeList extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 16),
                       child: SizedBox(
                         width: 200,
-                        child: Text(movieList[index]
+                        child: (movieList[index]['original_title'] != null) ? Text(movieList[index]
                         ['original_title'],
+                          style:
+                          const TextStyle(color: Colors.white),) : Text(movieList[index]
+                        ['original_name'],
                           style:
                           const TextStyle(color: Colors.white),)
                       ),

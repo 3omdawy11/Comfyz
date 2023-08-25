@@ -19,14 +19,18 @@ class MovieDescriptionScreen extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  'http://image.tmdb.org/t/p/w500' +
-                      moviesList[index]['poster_path'],
+          Flexible(
+            flex: 2,
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'http://image.tmdb.org/t/p/w500' +
+                        moviesList[index]['poster_path'],
+                  ),
                 ),
               ),
             ),
@@ -60,6 +64,7 @@ class MovieDescriptionScreen extends StatelessWidget {
           Text('Rate : ${moviesList[index]['vote_average']} ⭐'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
             children: [
               AddToFavoriteIcon(movie: moviesList[index]),
 
