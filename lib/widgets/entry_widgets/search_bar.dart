@@ -48,14 +48,14 @@ class _MySearchBarState extends State<MySearchBar> {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   hintText: 'Search for movies...',
-                  hintStyle: TextStyle(color: Colors.white),
+                  hintStyle: const TextStyle(color: Colors.white),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.red),
+                    borderSide: const BorderSide(color: Colors.red),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.red),
+                    borderSide: const BorderSide(color: Colors.red),
                   ),
                 ),
               ),

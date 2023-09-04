@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           final user = await FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                                   email: email, password: password);
-                          print(user.toString());
+                          //print(user.toString());
                           if (user != null) {
                             Navigator.pushNamed((context), Dashboard.id);
                           }

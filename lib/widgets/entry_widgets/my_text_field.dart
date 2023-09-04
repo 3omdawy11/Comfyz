@@ -27,7 +27,7 @@ class MyTextField extends StatelessWidget {
           suffixIconColor: Colors.red.shade400,
           suffixIcon: (hintText == 'Email') ? const Icon(Icons.email) : const Icon(Icons.password),
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.white),
+          hintStyle: const TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(

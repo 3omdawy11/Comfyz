@@ -92,10 +92,11 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                           final newUser = await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                           if (newUser != null){
+
                             Navigator.pushNamed((context), LoginScreen.id);
                           }
                         } catch (e) {
-                          print("Please Enter a username and a password");
+                          //print("Please Enter a username and a password");
                         }
                       },
                       child: const Text(

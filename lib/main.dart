@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
             ),
-            nextScreen: const Dashboard()),
+            nextScreen: const LoginScreen()),
         routes: {
           LoginScreen.id: (context) => const LoginScreen(),
           RegisterationScreen.id: (context) => const RegisterationScreen(),

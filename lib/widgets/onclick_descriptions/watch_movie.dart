@@ -15,7 +15,7 @@ class WatchMovie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _launchURL() async {
-      final String movieUrl = await MovieModel().watchMovie(moviesList[index]['id']);
+      final String movieUrl = await MovieModel().watchMovie(moviesList[index]['id']) ;
       print("The movie url is $movieUrl");
       if (movieUrl != null && movieUrl.isNotEmpty) {
         final Uri url = Uri.parse(movieUrl);

@@ -39,11 +39,12 @@ class _AddToFavoriteIconState extends State<AddToFavoriteIcon> {
                 ? Provider.of<PersonalData>(context, listen: false).deleteMovie(widget.movie)
                 : Provider.of<PersonalData>(context, listen: false).addMovie(widget.movie);
             print(widget.movie);
-            print(Provider.of<PersonalData>(context, listen: false).myFavorites.length);
+            //print(Provider.of<PersonalData>(context, listen: false).myFavorites.length);
             setState(() {
               _iconColor = _favorite ? Colors.white : Colors.yellow;
               _favorite = !_favorite;
             });
+            if (!_favorite) Navigator.pop(context);
           },
           icon: _icon,
           color: _iconColor,

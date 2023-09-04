@@ -42,6 +42,7 @@ class MovieList extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
+                    print(moviesList[index]['poster_path']);
                     showModalBottomSheet(
                         backgroundColor: Colors.transparent,
                         context: (context),
@@ -60,7 +61,7 @@ class MovieList extends StatelessWidget {
                         image: moviesList[index]['poster_path'] != null
                             ? DecorationImage(
                           image: NetworkImage(
-                            'http://image.tmdb.org/t/p/w500' +
+                            'http://image.tmdb.org/t/p/w500'+
                                 moviesList[index]['poster_path'],
                           ),
                           fit: BoxFit.cover,
@@ -69,7 +70,7 @@ class MovieList extends StatelessWidget {
                       ),
                       child: moviesList[index]['poster_path'] == null
                           ? const Center(
-                        child: Text('No Image'),
+                        child: Text('No Image',style: TextStyle(color: Colors.white),),
                       )
                           : null, // Displayed only when there's no image path
                     ),
